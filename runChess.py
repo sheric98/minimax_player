@@ -51,7 +51,6 @@ if __name__ == '__main__':
                 break
             with l:
                 if t.is_alive() and cpu_turn:
-                    print('got move ' + line)
                     interact.make_move(line, game, d)
                     print("made move " + line)
                     cpu_turn = False
