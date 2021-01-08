@@ -23,9 +23,10 @@ def init_game():
     # chrome_options.add_argument('--start-maximized')
     # chrome_options.add_argument('--allow-running-insecure-content')
     # chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.headless = True
-    chrome_options.no_sandbox = True
-    d = webdriver.Firefox(firefox_options=chrome_options)
+    # chrome_options.headless = True
+    # chrome_options.no_sandbox = True
+    # d = uc.Chrome(options=chrome_options)
+    d = uc.Chrome()
     d.get('https://www.google.com')
     # el = d.text
     # assert 'google' in d.text
