@@ -18,8 +18,18 @@ def send_pipe(p, inp):
     p.communicate(inp)
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print('Must pass in one argument as depth of minimax player')
+        exit(-1)
+
+    try:
+        depth = int(sys.argv[1])
+    except ValueError:
+        print("depth must be an integer")
+        exit(-1)
+
     p = subprocess.Popen(
-        ['./playChess', '0', '0', '1', '-a', '2', '-q'],
+        ['./playChess', '0', '0', '1', '-a', str(depth), '-q'],
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE,
         text=True,
@@ -32,7 +42,6 @@ if __name__ == '__main__':
     t.daemon = True
     t.start()
     d, game = interact.init_game()
-    # interact.make_move('d4', game, d)
     cpu_turn = True
     
     while True:
@@ -55,3 +64,4 @@ if __name__ == '__main__':
             else:
                 continue
 
+    d.close()

@@ -45,6 +45,7 @@ def get_square_el(square_str, driver):
     class_num = str(file_num(square_str[0])) + square_str[1]
     class_name = f'square-{class_num}'
     xpath = f"//div[contains(@class,'{class_name}')]"
+    WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, xpath)))
     return driver.find_element_by_xpath(xpath)
     
 
